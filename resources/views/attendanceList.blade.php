@@ -1,13 +1,16 @@
 @extends('layouts.practice')
 @section('title','勤怠管理TOP')
-
+<head>
+<link rel="stylesheet" type="text/css" href="css/attendanceList.css">
+</head>
 @include('header')
 
 @section('content')
 <form>
     <select name="emp_name">
-        <option value="taro">山田 太郎</option>
-        <option value="1">田中 次郎</option>
+        @foreach ($datas as $emp)
+        <option value="{{ $emp->name }}">{{ $emp->name }}</option>
+        @endforeach
     </select><br>
     <select name="year">
         @for($i=2010; $i<=2019; $i++)
@@ -22,7 +25,7 @@
     <input class="kintai" type="submit" value="勤怠を表示する" >
 </form>
 <hr size="1">
-<h2 id="select_mon" align="center">2019年10月<h2>
+<h2 id="select_mon" class="title">2019年10月<h2>
 <table border="1" style="border-collapse: collapse" align="center">
     <tr>
         <th>日付</th><th>開始</th><th>終了</th><th>休憩</th><th>勤務時間</th><th>作業内容</th><th>編集</th>
