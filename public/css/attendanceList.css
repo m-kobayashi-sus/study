@@ -1,27 +1,3 @@
-/*header*/
-
-header
-{
-	background-color: blue;
-	pading: 0;
-	display: flex
-}
-
-header a
-{
-	color: white;
-}
-#logo
-{
-	float: left;
-	clear: both;
-}
-
-a:nth-of-type(2)
-{
-	float:right;
-}
-
 /*body*/
 select
 {

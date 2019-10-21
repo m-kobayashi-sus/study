@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Employee;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/attendanceList','TopController@index');
+Route::get('attendanceList','AttendanceListController@emplist');
+
+Route::get('staff_reg','Staff_regController@index');
+Route::post('staff_reg','Staff_regController@add');
