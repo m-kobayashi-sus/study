@@ -21,6 +21,6 @@
         <label for="pass">パスワード</label>
         <input type="password" id="pass" name="pass" value="{{old('pass')}}">
     </div>
-        <input id="touroku" type="submit" value="登録する">
+        <input id="touroku" type="submit" value="確認する">
 </form>
 @endsection

@@ -27,8 +27,13 @@
     </div>
     <div>
         <label for="pass">パスワード</label>
-        <b>********</lb>
+        <b>********</b>
     </div>
+    <p>
+        <input type="hidden" name="name" value="{{$param['name']}}">
+        <input type="hidden" name="mail" value="{{$param['mail']}}">
+        <input type="hidden" name="pass" value="{{$param['pass']}}">
         <input id="touroku" type="submit" value="登録する">
+    </p>
 </form>
 @endsection
