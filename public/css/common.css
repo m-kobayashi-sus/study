@@ -1,0 +1,13 @@
+body {
+	color: #333333;
+}
+
+.title {
+	text-align: center;
+}
+
+form {
+	list-style: none;
+	text-align: left;
+	margin: 20px;
+}
