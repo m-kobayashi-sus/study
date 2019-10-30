@@ -11,3 +11,10 @@ form {
 	text-align: left;
 	margin: 20px;
 }
+.button-style-link {
+	border:none;
+	background-color:transparent;
+	color:blue;
+	text-decoration:underline;
+	font-size: 1.2em;
+}

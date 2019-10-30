@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('attendanceList','AttendanceListController@index');
+Route::get('attendanceList','AttendanceListController@search');
 
 Route::get('staff_reg','Staff_regController@index');
 

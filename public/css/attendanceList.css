@@ -26,7 +26,17 @@ td
 	padding: 2px 5px;
 	margin: 10px;
 }
+
 table {
 	border-collapse: collapse;
 	margin: 0 auto;
+}
+#pager {
+	margin: 0 auto;
+	width: 40%;
+	display: flex;
+	justify-content: space-between;
+}
+#pager a {
+	margin:auto 0;
 }
