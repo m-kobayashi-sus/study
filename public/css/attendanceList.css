@@ -31,6 +31,11 @@ table {
 	border-collapse: collapse;
 	margin: 0 auto;
 }
+table th {
+	width: auto;
+	height: auto;
+	padding: auto;
+}
 #pager {
 	margin: 0 auto;
 	width: 40%;
