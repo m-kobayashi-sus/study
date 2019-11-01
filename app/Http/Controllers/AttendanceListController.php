@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Attendance;
-use App\Models\AttendanceList;
 
 class AttendanceListController extends Controller
 {
@@ -23,15 +21,8 @@ class AttendanceListController extends Controller
         $emps = DB::table('employee')->get();
         $atts = DB::table('attendance')->get();
 
-        $records = $attendance->find($param);
+        $records = $attendance->search($param);
 
-//         var_dump($records);
-//         $diff = strtotime(array_column($records,'end_time'))-strtotime(array_column($records,'start_time'))-array_column($records,'break_time');
-//         $result = gmdate("H:i", $diff);
-//         array_push($records,$result);
-
-        $BTfomat = new AttendanceList();
-
-        return view('/attendanceList',compact('param'),[$BTfomat,'emps' => $emps,'atts' => $atts,'records' => $records]);
+        return view('/attendanceList',compact('param'),['emps' => $emps,'atts' => $atts,'records' => $records]);
     }
 }

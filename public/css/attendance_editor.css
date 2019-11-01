@@ -33,3 +33,12 @@ div ul { font-size: 12px; }
 form div {
 	margin: 8px;
 }
+textarea {
+  	resize: none;
+ 	width:300px;
+  	height:100px;
+	vertical-align:top;
+}
+#numarea {
+	 width:50px;
+}

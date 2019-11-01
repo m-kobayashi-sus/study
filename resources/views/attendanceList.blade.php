@@ -86,13 +86,28 @@
         <th>{{ ltrim(gmdate("H:i", strtotime($record->end_time)-strtotime($record->start_time)-($record->break_time)*60), '0') }}</th>
         <th>{{ $record->detail }}</th>
         <th>
-            <button value="edit">編集</button>
-            <button value="del">削除</button>
+            <div class="tablebutton" >
+            <form action="attendanceEditor" method="post">
+            {{ csrf_field()}}
+                    <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
+                    <input type="hidden" name="id" value="{{ $record->id }}">
+                    <input type="submit" value="編集" >
+            </form>
+            </div>
+            <div class="tablebutton" >
+                <form action="" method="get">
+                    <input type="submit" value="削除" >
+                </form>
+            </div>
         </th>
     </tr>
     @endforeach
 </table>
-<button class="kintai" href="">勤怠を登録する</button>
+<form action="attendanceEditor" method="post">
+            {{ csrf_field()}}
+    <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
+    <input class="kintai" type="submit" value="勤怠を登録する" >
+</form>
 @else
 @endif
 @endsection
