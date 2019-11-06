@@ -26,7 +26,8 @@ Route::post('staff_check','Staff_checkController@index');
 Route::get('staff_reg_complete','Staff_reg_completeController@index');
 Route::post('staff_reg_complete','Staff_reg_completeController@create');
 
+#編集・新規登録時の分岐
 Route::post('attendanceEditor','AttendanceEditorController@branch');
 
-#勤怠登録機能
+#勤怠登録完了画面
 Route::post('complete','CompleteController@complete');

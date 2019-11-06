@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 class Attendance
 {
     public function search($getparam) {
-        #勤怠一覧取得（月単位）
-        #リクエストで取得した値で検索
+        //勤怠一覧取得（月単位）
+        //リクエストで取得した値で検索
         if(!empty($getparam))
         {
             $records = DB::table('attendance')
@@ -28,7 +28,7 @@ class Attendance
         return ($records);
     }
     public function find($id) {
-        #勤怠取得（1レコード）
+        //勤怠取得（1レコード）
         $record = DB::table('attendance')
         ->select('id',
             'employee_id',
@@ -46,7 +46,7 @@ class Attendance
     }
 
     public function empidGet($name) {
-        #社員ID取得（1レコード）
+        //社員ID取得
         $emp_id = DB::table('employee')
         ->select('id')
             ->where('name', '=', $name)
@@ -54,6 +54,7 @@ class Attendance
             return ($emp_id);
     }
     public function create($param) {
+        //新規勤怠登録
         DB::table('attendance')
         ->insert(
             [
@@ -69,6 +70,7 @@ class Attendance
             );
     }
     public function update($param) {
+        //勤怠更新
         DB::table('attendance')
         ->where('id',$param['id'])
         ->update(
