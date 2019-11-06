@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('attendanceList','AttendanceListController@search');
+Route::get('attendanceList','AttendanceListController@branchdelete');
+// Route::post('attendanceList','AttendanceListController@delete');
 
 Route::get('staff_reg','Staff_regController@index');
 

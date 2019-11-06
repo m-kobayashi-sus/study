@@ -19,7 +19,8 @@ class Attendance
                 DB::raw('DATE_FORMAT(start_time,"%k:%i")as start_time'),
                 DB::raw('DATE_FORMAT(end_time,"%k:%i")as end_time'),
                 'break_time',
-                'detail')
+                'detail',
+                'attendance.delete_flag')
             ->where('employee.name', '=', $getparam['emp_name'])
             ->whereYear('date',$getparam['year'])
             ->whereMonth('date', $getparam['month'])
@@ -80,6 +81,17 @@ class Attendance
                 'break_time' => $param['break_time'],
                 'detail' => $param['detail'],
                 'update_time' => now(),
+            ]
+            );
+    }
+
+    public function delete($id) {
+        //勤怠削除（デリーとフラグの更新）
+        DB::table('attendance')
+        ->where('id',$id)
+        ->update(
+            [
+                'delete_flag' => '1'
             ]
             );
     }

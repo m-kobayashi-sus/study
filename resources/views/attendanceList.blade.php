@@ -78,6 +78,7 @@
         <th>編集</th>
     </tr>
     @foreach ($records as $record)
+    @if( $record->delete_flag != '1')
     <tr class="list">
         <th>{{ $record->formatted_date }}</th>
         <th>{{ $record->start_time }}</th>
@@ -87,20 +88,26 @@
         <th>{{ $record->detail }}</th>
         <th>
             <div class="tablebutton" >
-            <form action="attendanceEditor" method="post">
-            {{ csrf_field()}}
+                <form action="attendanceEditor" method="post">
+                {{ csrf_field()}}
                     <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
                     <input type="hidden" name="id" value="{{ $record->id }}">
                     <input type="submit" value="編集" >
-            </form>
+                </form>
             </div>
             <div class="tablebutton" >
-                <form action="" method="get">
-                    <input type="submit" value="削除" >
+                <form action="attendanceList" method="get">
+                        <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
+                        <input type="hidden" name="year" value="{{$param['year']}}">
+                        <input type="hidden" name="month" value="{{$param['month']}}">
+                        <input type="hidden" name="attendance_id" value="{{$record->id}}">
+                    <input type="submit" value="削除"  onclick="return confirm('勤怠情報を削除してもよろしいですか？')">
                 </form>
             </div>
         </th>
     </tr>
+    @else
+    @endif
     @endforeach
 </table>
 <form action="attendanceEditor" method="post">
