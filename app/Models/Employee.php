@@ -10,5 +10,6 @@ class Employee extends Model
     public function addemp($param) {
         DB::table('employee')
         ->insertGetId($param);
+        //社員テーブルへデータを登録
     }
 }

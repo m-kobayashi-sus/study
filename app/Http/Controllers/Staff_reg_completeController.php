@@ -9,6 +9,7 @@ class Staff_reg_completeController extends Controller
 {
     public function create(Request $request)
     {
+        //記入内容+フラグ、タイムスタンプを設定し、完了画面へ
         $addemp = new Employee();
         $param =[
             'name' => $request->input('name'),
