@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Employee;
 
 class Staff_reg_completeController extends Controller
 {
-    public function index(Request $request) {
-        return view('staff_reg_complete');
-    }
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
+        $addemp = new Employee();
         $param =[
             'name' => $request->input('name'),
             'mail' => $request->input('mail'),
@@ -18,7 +17,9 @@ class Staff_reg_completeController extends Controller
             'delete_flag' => '0',
             'create_time' => \Carbon\Carbon::now(),
         ];
-        DB::table('employee')->insertGetId($param);
-        return redirect('staff_reg_complete');
+
+        $addemp->addemp($param);
+
+        return view('staff_reg_complete');
     }
 }

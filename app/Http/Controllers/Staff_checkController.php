@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\AddEmployee;
+
 
 class Staff_checkController extends Controller
 {
-    public function index(AddEmployee $request) {
+    public function check(AddEmployee $request) {
         $param =[
             'name' => $request->input('name'),
             'mail' => $request->input('mail'),

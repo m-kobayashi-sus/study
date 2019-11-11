@@ -17,11 +17,8 @@ Route::get('/', function () {
 
 Route::get('attendanceList','AttendanceListController@search');
 
-Route::get('staff_reg','Staff_regController@index');
+Route::get('staff_reg','Staff_regController@acces');
 
-Route::get('staff_reg_error','Staff_reg_errorController@index');
+Route::post('staff_check','Staff_checkController@check');
 
-Route::post('staff_check','Staff_checkController@index');
-
-Route::get('staff_reg_complete','Staff_reg_completeController@index');
 Route::post('staff_reg_complete','Staff_reg_completeController@create');
