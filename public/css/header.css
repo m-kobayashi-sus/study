@@ -1,7 +1,11 @@
 /*header*/
 
 header {
+<<<<<<< HEAD
+	background-color: blue;
+=======
 	background-color: #0000BB;
+>>>>>>> 7a9e3c79cfc557102d02831e00a804ffc55eb05a
 }
 
 header a {

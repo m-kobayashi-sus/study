@@ -1,3 +1,27 @@
+/*header*/
+
+header
+{
+	background-color: blue;
+	pading: 0;
+	display: flex
+}
+
+header a
+{
+	color: white;
+}
+#logo
+{
+	float: left;
+	clear: both;
+}
+
+a:nth-of-type(2)
+{
+	float:right;
+}
+
 /*body*/
 select
 {
@@ -25,11 +49,4 @@ td
 	display: block;
 	padding: 2px 5px;
 	margin: 10px;
-<<<<<<< HEAD
-=======
-}
-table {
-	border-collapse: collapse;
-	margin: 0 auto;
->>>>>>> 7a9e3c79cfc557102d02831e00a804ffc55eb05a
 }
