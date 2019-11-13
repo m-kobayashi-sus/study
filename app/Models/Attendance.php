@@ -21,13 +21,23 @@ class Attendance
                 'break_time',
                 'detail',
                 'attendance.delete_flag')
-            ->where('employee.name', '=', $getparam['emp_name'])
+                ->where('employee.name', '=', $getparam['emp_name'],'AND', 'delete_flag', '=', '0')
             ->whereYear('date',$getparam['year'])
             ->whereMonth('date', $getparam['month'])
             ->get();
         }
         return ($records);
     }
+
+    public function getallatn() {
+        //有効な勤怠情報を全件取得
+        $attendance = DB::table('attendance')
+        ->where('delete_flag' , '0')
+        ->get();
+
+        return ($attendance);
+    }
+
     public function find($id) {
         //勤怠取得（1レコード）
         $record = DB::table('attendance')
@@ -86,7 +96,7 @@ class Attendance
     }
 
     public function delete($id) {
-        //勤怠削除（デリーとフラグの更新）
+        //勤怠削除（デリートフラグの更新）
         DB::table('attendance')
         ->where('id',$id)
         ->update(

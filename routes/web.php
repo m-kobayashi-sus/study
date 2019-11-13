@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('attendanceList','AttendanceListController@branchdelete');
-// Route::post('attendanceList','AttendanceListController@delete');
+Route::get('attendanceList','AttendanceListController@search');
+
+Route::post('attendanceList','AttendanceListController@delete');
+//削除ボタン押下時のルート（勤怠削除し、再表示）
 
 Route::get('staff_reg','Staff_regController@index');
 

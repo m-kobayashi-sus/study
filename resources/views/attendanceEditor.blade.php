@@ -34,7 +34,7 @@
     <div>
         <label for="start_time">出勤時刻</label>
         <select name="start_h">
-            @for($h=0; $h<=24; $h++)
+            @for($h=0; $h<=23; $h++)
             <option value="{{$h}}">{{ $h }}</option>
             @endfor
             @if(isset($record))
@@ -53,7 +53,7 @@
     <div>
         <label for="end_time">退勤時刻</label>
         <select name="end_h">
-            @for($h=0; $h<=24; $h++)
+            @for($h=0; $h<=23; $h++)
             <option value="{{$h}}">{{ $h }}</option>
             @endfor
             @if(isset($record))

@@ -78,12 +78,15 @@
         <th>編集</th>
     </tr>
     @foreach ($records as $record)
-    @if( $record->delete_flag != '1')
     <tr class="list">
         <th>{{ $record->formatted_date }}</th>
         <th>{{ $record->start_time }}</th>
         <th>{{ $record->end_time }}</th>
+        @if ($record->break_time < 60)
+        <th>{{ substr(gmdate("H:i",$record->break_time*60),1,4) }}</th>
+        @else
         <th>{{ ltrim(gmdate("H:i",$record->break_time*60), '0') }}</th>
+        @endif
         <th>{{ ltrim(gmdate("H:i", strtotime($record->end_time)-strtotime($record->start_time)-($record->break_time)*60), '0') }}</th>
         <th>{{ $record->detail }}</th>
         <th>
@@ -96,18 +99,17 @@
                 </form>
             </div>
             <div class="tablebutton" >
-                <form action="attendanceList" method="get">
-                        <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
-                        <input type="hidden" name="year" value="{{$param['year']}}">
-                        <input type="hidden" name="month" value="{{$param['month']}}">
-                        <input type="hidden" name="attendance_id" value="{{$record->id}}">
-                    <input type="submit" value="削除"  onclick="return confirm('勤怠情報を削除してもよろしいですか？')">
+                <form action="attendanceList" method="post">
+                {{ csrf_field()}}
+                    <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
+                    <input type="hidden" name="year" value="{{$param['year']}}">
+                    <input type="hidden" name="month" value="{{$param['month']}}">
+                    <input type="hidden" name="attendance_id" value="{{$record->id}}">
+                    <input type="submit" value="削除" onclick="return confirm('勤怠情報を削除してもよろしいですか？')">
                 </form>
             </div>
         </th>
     </tr>
-    @else
-    @endif
     @endforeach
 </table>
 <form action="attendanceEditor" method="post">
