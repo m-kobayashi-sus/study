@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AddEmployee extends FormRequest
 {
-    protected $redirect = 'staff_check';
+    protected $redirect = 'staff_reg';
     /**
      * Determine if the user is authorized to make this request.
      *
