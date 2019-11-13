@@ -21,18 +21,19 @@
         <th>{{ $emp->mail }}</th>
         <th>
             <div class="tablebutton" >
-                <form action="staff_list" method="post">
+                <form action="staff_edit" method="post">
                 {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{ $emp->id }}">
                     <input type="hidden" name="name" value="{{ $emp->name }}">
-                    <input type="hidden" name="mail" value="{{ $emp->name }}">
-                    <input type="hidden" name="pass" value="{{ $emp->password }}">
+                    <input type="hidden" name="mail" value="{{ $emp->mail }}">
+                    <input type="hidden" name="pass" value="{{ $emp->pass }}">
                     <input type="submit" value="編集">
                 </form>
             </div>
             <div class="tablebutton" >
-                <form action="staff_list" method="post">
+                <form action="staff_delete" method="post">
                 {{ csrf_field() }}
-                    <input type="hidden" name="name" value="{{ $emp->id }}">
+                    <input type="hidden" name="id" value="{{ $emp->id }}">
                     <input type="submit" value="削除" onclick="return confirm('{{ $emp->name }}さんを削除しますか？\n登録済みの勤怠データも削除されます。')">
                 </form>
             </div>

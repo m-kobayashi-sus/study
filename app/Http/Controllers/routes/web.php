@@ -11,17 +11,9 @@
 |
 */
 
+use Illuminate\Routing\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('attendanceList','AttendanceListController@index');
-
-Route::get('staff_reg','Staff_regController@index');
-
-Route::get('staff_reg_error','Staff_reg_errorController@index');
-
-Route::post('staff_check','Staff_checkController@index');
-
-Route::get('staff_reg_complete','Staff_reg_completeController@index');
-Route::post('staff_reg_complete','Staff_reg_completeController@create');

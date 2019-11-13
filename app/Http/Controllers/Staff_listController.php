@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
-use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class Staff_listController extends Controller
 {
     public function staffall() {
         //社員全員のデータを取得
         $getemp  = new Employee();
-        $emps = $getemp->getemp();
+        $emps = $getemp->getall();
 
         $i = 0;
 
@@ -20,12 +19,14 @@ class Staff_listController extends Controller
     public function staffbranch(Request $request) {
         //削除・編集ボタン押下時の分岐
         if ($request->has('id')){
-            //idが送信されている場合、削除処理
-            $this->staffdelete($request);
-            return $this->staffdelete($request);
+            //idが送信されている場合、削除処理へ
+            $delete = app()->make('App\Http\Controllers\Staff_deleteController');
+            $delete->delemp($request);
+            return $delete->delemp($request);
         }else{
-            $this->staffedit($request);
-            return $this->staffedit($request);
+            $edit = app()->make('App\Http\Controllers\Staff_editController');
+            $edit->getemp($request);
+            return $edit->getemp($request);
         };
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Attendance;
+use App\Models\Attendance;
 
 class AttendanceController extends Controller
 {
