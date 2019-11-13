@@ -41,4 +41,15 @@ class Employee extends Model
             );
         //idから、社員情報を上書き
     }
+
+    public function deleteemp($id) {
+        DB::table('employee')
+        ->where('id' , $id)
+        ->update(
+            [
+                'delete_flag' => '1',
+            ]
+            );
+        //デリートフラグを立てる（削除処理）
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Attendance;
 
 class Staff_listController extends Controller
 {
@@ -16,18 +17,21 @@ class Staff_listController extends Controller
 
         return view('/staff_list',compact('emps'),['i' => $i]);
     }
-    public function staffbranch(Request $request) {
-        //削除・編集ボタン押下時の分岐
-        if ($request->has('id')){
-            //idが送信されている場合、削除処理へ
-            $delete = app()->make('App\Http\Controllers\Staff_deleteController');
-            $delete->delemp($request);
-            return $delete->delemp($request);
-        }else{
-            $edit = app()->make('App\Http\Controllers\Staff_editController');
-            $edit->getemp($request);
-            return $edit->getemp($request);
-        };
+    public function delete(Request $request) {
+        //削除ボタン押下時
+        $employee = new Employee();
+        $attendance = new Attendance();
+
+        $id = $request->input('id');
+        //idを変数に
+
+        $employee->deleteemp($id);
+        //社員のフラグを立てる
+        $attendance->deleteatn($id);
+        //該当する社員の勤怠のフラグを立てる
+
+        return $this->staffall();
+        //再度全件取得、一覧画面を表示
     }
 
 }

@@ -31,7 +31,7 @@
                 </form>
             </div>
             <div class="tablebutton" >
-                <form action="staff_delete" method="post">
+                <form action="staff_list" method="post">
                 {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $emp->id }}">
                     <input type="submit" value="削除" onclick="return confirm('{{ $emp->name }}さんを削除しますか？\n登録済みの勤怠データも削除されます。')">

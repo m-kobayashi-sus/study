@@ -21,4 +21,14 @@ class Attendance
         }
         return ($records);
     }
+    public function deleteatn($emp_id) {
+        DB::table('attendance')
+        ->where('employee_id' , $emp_id)
+        ->update(
+            [
+                'delete_flag' => '1',
+            ]
+            );
+        //デリートフラグを立てる（削除処理）
+    }
 }

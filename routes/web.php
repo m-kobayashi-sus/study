@@ -20,6 +20,9 @@ Route::get('attendanceList','AttendanceListController@search');
 Route::get('staff_list','Staff_listController@staffall');
 //社員一覧画面へのアクセス
 
+Route::post('staff_list','Staff_listController@delete');
+//社員削除
+
 
 
 Route::match(['get','post'],'staff_edit','Staff_editController@getemp');
