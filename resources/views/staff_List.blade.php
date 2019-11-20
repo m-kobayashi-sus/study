@@ -16,10 +16,10 @@
     </tr>
     @foreach ($emps as $emp)
     <tr class="list">
-        <th>{{ $emp->id }}</th>
-        <th>{{ $emp->name }}</th>
-        <th>{{ $emp->mail }}</th>
-        <th>
+        <td>{{ $emp->id }}</td>
+        <td>{{ $emp->name }}</td>
+        <td>{{ $emp->mail }}</td>
+        <td>
             <div class="tablebutton" >
                 <form action="staff_edit" method="post">
                 {{ csrf_field() }}
@@ -37,7 +37,7 @@
                     <input type="submit" value="削除" onclick="return confirm('{{ $emp->name }}さんを削除しますか？\n登録済みの勤怠データも削除されます。')">
                 </form>
             </div>
-        </th>
+        </td>
     </tr>
     @endforeach
 </table>
