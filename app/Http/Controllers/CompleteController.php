@@ -15,8 +15,11 @@ class CompleteController extends Controller
         if (empty($request->input('id')))
         {
             $attendance->create($request);
+
         }else{
+
         $attendance->update($request);
+
         }
         return view('complete');
     }

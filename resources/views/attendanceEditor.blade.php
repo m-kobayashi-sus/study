@@ -41,14 +41,10 @@
             <option value="{{$record->start_hour}}" selected>{{ $record->start_hour }}</option>
             @endif
         </select>時
-        <select name="start_min">
-            @for($m=0; $m<=59; $m++)
-            <option value="{{$m}}">{{ $m }}</option>
-            @endfor
-            @if(isset($record))
-            <option value="{{$record->start_min}}" selected>{{ $record->start_min }}</option>
-            @endif
-        </select>分
+        <input type="number" class="numarea" name="start_min" value="">分
+        @if(isset($record))
+        <input type="number" class="numarea" name="start_min" value="{{$record->start_min}}">分
+        @endif
     </div>
     <div>
         <label for="end_time">退勤時刻</label>
@@ -60,21 +56,17 @@
             <option value="{{$record->end_hour}}" selected>{{ $record->end_hour }}</option>
             @endif
         </select>時
-        <select name="end_min">
-            @for($m=0; $m<=59; $m++)
-            <option value="{{$m}}">{{ $m }}</option>
-            @endfor
-            @if(isset($record))
-            <option value="{{$record->end_min}}" selected>{{ $record->end_min }}</option>
-            @endif
-        </select>分
+        <input type="number" class="numarea" name="end_min" value="">分
+        @if(isset($record))
+        <input type="number" class="numarea" name="end_min" value="{{$record->end_min}}">分
+        @endif
     </div>
     <div>
         <label for="break_time">休憩時間</label>
         @if(isset($record))
-        <input id="numarea" type="number" name="break_time" min="0" value="{{$record->break_time}}">分
+        <input type="number" class="numarea" name="break_time" min="0" value="{{$record->break_time}}">分
         @else
-        <input id="numarea" type="number" name="break_time" min="0">分
+        <input type="number" class="numarea" name="break_time" min="0">分
         @endif
         </div>
     <div>
