@@ -20,19 +20,19 @@
 <!-- エラーメッセージ -->
 <form action="staff_edit_check" method="post">
 {{ csrf_field() }}
-    @if (!empty($emp))
-        <input type="hidden" name="id" value="{{ $emp->id }}">
+    @if (!empty($getemp))
+        <input type="hidden" name="id" value="{{ $getemp->id }}">
     <div>
         <label for="name">名前</label>
-        <input type="text" id="name" name="name" value="{{ $emp->name }}">
+        <input type="text" id="name" name="name" value="{{ $getemp->name }}">
     </div>
     <div>
         <label for="mail">メールアドレス</label>
-        <input type="email" id="mail" name="mail" value="{{ $emp->mail }}">
+        <input type="email" id="mail" name="mail" value="{{ $getemp->mail }}">
     </div>
     <div>
         <label for="bef_pass">パスワード(変更前)</label>
-        <input type="password" id="pass" name="bef_pass" value="{{ $emp->pass }}">
+        <input type="password" id="pass" name="bef_pass" value="{{ $getemp->pass }}">
     </div>
     @else
     <input type="hidden" name="id" value="{{ old('id') }}">

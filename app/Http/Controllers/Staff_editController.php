@@ -10,9 +10,11 @@ class Staff_editController extends Controller
 {
     public function getemp(Request $request)
     {
-        $getemp = new Employee();
-        $emp = $getemp->getone($request->input('id'));
+        $emp = new Employee();
+
         //選択した社員のidから、レコードを取得
-        return view('/staff_edit',compact('emp'));
+        $getemp = $emp->getone($request->input('id'));
+
+        return view('/staff_edit',compact('getemp'));
     }
 }
