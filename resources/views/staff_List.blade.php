@@ -16,7 +16,7 @@
     </tr>
     @foreach ($emps as $emp)
     <tr class="list">
-        <th>{{ $i = $i+1 }}</th>
+        <th>{{ $emp->id }}</th>
         <th>{{ $emp->name }}</th>
         <th>{{ $emp->mail }}</th>
         <th>

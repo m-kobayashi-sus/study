@@ -13,9 +13,7 @@ class Staff_listController extends Controller
         $getemp  = new Employee();
         $emps = $getemp->getall();
 
-        $i = 0;
-
-        return view('/staff_list',compact('emps'),['i' => $i]);
+        return view('/staff_list',compact('emps'));
     }
     public function delete(Request $request) {
         //削除ボタン押下時
