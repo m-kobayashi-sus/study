@@ -70,17 +70,17 @@
     </tr>
     @foreach ($records as $record)
     <tr class="list">
-        <th>{{ $record->formatted_date }}</th>
-        <th>{{ $record->start_time }}</th>
-        <th>{{ $record->end_time }}</th>
+        <td>{{ $record->formatted_date }}</td>
+        <td>{{ $record->start_time }}</td>
+        <td>{{ $record->end_time }}</td>
         @if ($record->break_time < 60)
-        <th>{{ substr(gmdate("H:i",$record->break_time*60),1,4) }}</th>
+        <td>{{ substr(gmdate("H:i",$record->break_time*60),1,4) }}</td>
         @else
-        <th>{{ ltrim(gmdate("H:i",$record->break_time*60), '0') }}</th>
+        <td>{{ ltrim(gmdate("H:i",$record->break_time*60), '0') }}</td>
         @endif
-        <th>{{ ltrim(gmdate("H:i", strtotime($record->end_time)-strtotime($record->start_time)-($record->break_time)*60), '0') }}</th>
-        <th>{{ $record->detail }}</th>
-        <th>
+        <td>{{ ltrim(gmdate("H:i", strtotime($record->end_time)-strtotime($record->start_time)-($record->break_time)*60), '0') }}</td>
+        <td>{{ $record->detail }}</td>
+        <td>
             <div class="tablebutton" >
                 <form action="attendanceEditor" method="post">
                 {{ csrf_field()}}
@@ -99,7 +99,7 @@
                     <input type="submit" value="削除" onclick="return confirm('勤怠情報を削除してもよろしいですか？')">
                 </form>
             </div>
-        </th>
+        </td>
     </tr>
     @endforeach
 </table>
