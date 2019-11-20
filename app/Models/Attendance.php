@@ -29,6 +29,17 @@ class Attendance
         return ($records);
     }
 
+    public function getYear() {
+        //有効な勤怠情報の年のみ取得（重複排除、昇順）
+        $year = DB::table('attendance')
+            ->select(DB::raw('DATE_FORMAT(date,"%Y")as year'))
+            ->where('delete_flag', '=', '0')
+            ->distinct()
+            ->orderBy('year', 'asc')
+            ->get();
+        return $year;
+    }
+
     public function getallatn() {
         //有効な勤怠情報を全件取得
         $attendance = DB::table('attendance')

@@ -24,11 +24,14 @@ class AttendanceListController extends Controller
 
         $emps = $employees->getall();
         $atn = $attendance->getallatn();
-        //有効な社員を全件取得
 
+        //プルダウン用の有効年を取得
+        $years = $attendance->getYear();
+
+        //有効な社員を全件取得
         $records = $attendance->search($param);
 
-        return view('/attendanceList',compact('param'),['emps' => $emps,'atn' => $atn,'records' => $records]);
+        return view('/attendanceList',compact('param'),['emps' => $emps,'atn' => $atn,'records' => $records,'years' => $years]);
     }
 
     public function delete(Request $request) {

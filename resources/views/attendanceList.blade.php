@@ -8,35 +8,26 @@
 @section('content')
 <form action="attendanceList" method="get">
    <select name="emp_name">
-        <option selected></option>
+        @if(empty($param['emp_name']))
+        <option disabled selected>社員を選択</option>
+        @else
+        <option disabled selected>{{ ($param['emp_name']) }}</option>
+        @endif
         @foreach ($emps as $emp)
         <option value="{{ $emp->name }}">{{ $emp->name }}</option>
-        @if($param['emp_name'] == $emp->name )
-        <option value="{{ $emp->name }}" selected>{{ $emp->name }}</option>
-        @endif
         @endforeach
     </select><br>
     <select name="year">
-        @for($y=2015; $y<=date('Y'); $y++)
-        <option value="{{$y}}">{{$y}}</option>
-        @if($param['year'] == $y )
-        <option value="{{$y}}" selected>{{$y}}</option>
-        @endif
-        @endfor
-        @if($param['year'] =="" )
-        <option value="{{date('Y')}}" selected>{{date('Y')}}</option>
-        @endif
+        <option disabled selected>{{ ($param['year']) }}</option>
+        @foreach ($years as $year)
+        <option value="{{ $year->year }}">{{ $year->year }}</option>
+        @endforeach
     </select>年
     <select name="month">
+        <option disabled selected>{{ ($param['month']) }}</option>
         @for($m=1; $m<=12; $m++)
         <option value="{{$m}}">{{$m}}</option>
-        @if($param['month'] == $m )
-        <option value="{{$m}}" selected>{{$m}}</option>
-        @endif
         @endfor
-        @if($param['month'] =="" )
-        <option value="{{date('n')}}" selected>{{date('n')}}</option>
-        @endif
     </select>月
     <input class="kintai" type="submit" value="勤怠を表示する" >
 </form>
