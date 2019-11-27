@@ -23,13 +23,13 @@
         <option value="{{ $year->year }}">{{ $year->year }}</option>
         @endforeach
     </select>年
-    <select name="month">
+    <select name="month" name="month">
         <option disabled selected>{{ ($param['month']) }}</option>
         @for($m=1; $m<=12; $m++)
         <option value="{{$m}}">{{$m}}</option>
         @endfor
     </select>月
-    <input class="kintai" type="submit" value="勤怠を表示する" >
+    <input class="kintai" type="submit" value="勤怠を表示する">
 </form>
 <hr size="1">
 @if(!empty($param['emp_name']))
