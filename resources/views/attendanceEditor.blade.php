@@ -41,9 +41,10 @@
             <option value="{{$record->start_hour}}" selected>{{ $record->start_hour }}</option>
             @endif
         </select>時
-        <input type="number" class="numarea" name="start_min" value="">分
         @if(isset($record))
         <input type="number" class="numarea" name="start_min" value="{{$record->start_min}}">分
+        @else
+        <input type="number" class="numarea" name="start_min" value="">分
         @endif
     </div>
     <div>
@@ -56,9 +57,10 @@
             <option value="{{$record->end_hour}}" selected>{{ $record->end_hour }}</option>
             @endif
         </select>時
-        <input type="number" class="numarea" name="end_min" value="">分
         @if(isset($record))
         <input type="number" class="numarea" name="end_min" value="{{$record->end_min}}">分
+        @else
+        <input type="number" class="numarea" name="end_min" value="">分
         @endif
     </div>
     <div>
@@ -71,8 +73,7 @@
         </div>
     <div>
         <label for="detail">作業内容</label>
-        <textarea name="detail">@if(isset($record)){{ $record->detail }}@endif
-        </textarea>
+        <textarea name="detail">@if(isset($record)){{ $record->detail }}@endif</textarea>
     </div>
     <input id="touroku" type="submit" value="登録する">
 </form>

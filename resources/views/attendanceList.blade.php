@@ -23,7 +23,7 @@
         <option value="{{ $year->year }}">{{ $year->year }}</option>
         @endforeach
     </select>年
-    <select name="month" name="month">
+    <select name="month">
         <option disabled selected>{{ ($param['month']) }}</option>
         @for($m=1; $m<=12; $m++)
         <option value="{{$m}}">{{$m}}</option>
