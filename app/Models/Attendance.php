@@ -28,7 +28,6 @@ class Attendance
         }
         return ($records);
     }
-
     public function getYear() {
         //有効な勤怠情報の年のみ取得（重複排除、昇順）
         $year = DB::table('attendance')
@@ -115,5 +114,15 @@ class Attendance
                 'delete_flag' => '1'
             ]
             );
+    }
+    public function deleteatn($emp_id) {
+        DB::table('attendance')
+        ->where('employee_id' , $emp_id)
+        ->update(
+            [
+                'delete_flag' => '1',
+            ]
+            );
+        //デリートフラグを立てる（削除処理）
     }
 }

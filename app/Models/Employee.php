@@ -14,4 +14,42 @@ class Employee extends Model
         //有効な社員を全件取得
         return ($employees);
     }
+
+    public function getone($id) {
+        $employee = DB::table('employee')
+        ->where('id' , $id)
+        ->first();
+        //選択した社員を一件取得
+        return ($employee);
+    }
+    public function addemp($param) {
+        DB::table('employee')
+        ->select($param);
+        //社員テーブルへデータを登録
+    }
+
+    public function updateemp($param) {
+        DB::table('employee')
+        ->where('id' , $param['id'])
+        ->update(
+            [
+                'name' => $param['name'],
+                'mail' => $param['mail'],
+                'pass' => $param['pass'],
+                'update_time' => now(),
+            ]
+            );
+        //idから、社員情報を上書き
+    }
+
+    public function deleteemp($id) {
+        DB::table('employee')
+        ->where('id' , $id)
+        ->update(
+            [
+                'delete_flag' => '1',
+            ]
+            );
+        //デリートフラグを立てる（削除処理）
+    }
 }

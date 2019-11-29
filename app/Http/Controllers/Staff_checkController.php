@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddEmployee;
 
-
 class Staff_checkController extends Controller
 {
     public function check(AddEmployee $request) {

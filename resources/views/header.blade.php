@@ -6,7 +6,7 @@
     <ul>
         <li><img id="logo" src="image/logo.png"></li>
         <li><a href= "/attendanceList">勤怠管理システム</a></li>
-        <li><a href= "/staff_reg">社員を登録する</a></li>
+        <li><a href= "/staff_list">社員を登録する</a></li>
     </ul>
 </header>
 @endsection
