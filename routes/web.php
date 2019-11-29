@@ -47,10 +47,8 @@ Route::get('staff_reg','Staff_regController@acces');
 Route::post('staff_check','Staff_checkController@check');
 //確認ボタン押下時（バリデート）
 
-Route::post('staff_check','Staff_checkController@index');
-
-Route::get('staff_reg_complete','Staff_reg_completeController@index');
 Route::post('staff_reg_complete','Staff_reg_completeController@create');
+//登録ボタン押下の処理（登録処理）
 
 #編集・新規登録時の分岐
 Route::post('attendanceEditor','AttendanceEditorController@branch');
