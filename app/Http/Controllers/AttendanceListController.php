@@ -3,35 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Attendance;
-use App\Models\AttendanceList;
+use App\Models\Employee;
 
 class AttendanceListController extends Controller
 {
     public function search(Request $request)
     {
+        $employees = new Employee();
+
         $attendance = new Attendance();
-        #キーワード受け取り
+        //キーワード受け取り
         $param =[
             'emp_name' => $request->input('emp_name'),
             'year' => $request->input('year'),
             'month' => $request->input('month'),
+            'attendance_id' => $request->input('attendance_id'),
         ];
-        #DBからデータを取得
-        $emps = DB::table('employee')->get();
-        $atts = DB::table('attendance')->get();
 
-        $records = $attendance->find($param);
+        $emps = $employees->getall();
+        $atn = $attendance->getallatn();
 
-//         var_dump($records);
-//         $diff = strtotime(array_column($records,'end_time'))-strtotime(array_column($records,'start_time'))-array_column($records,'break_time');
-//         $result = gmdate("H:i", $diff);
-//         array_push($records,$result);
+        //プルダウン用の有効年を取得
+        $years = $attendance->getYear();
 
-        $BTfomat = new AttendanceList();
+        //有効な社員を全件取得
+        $records = $attendance->search($param);
 
-        return view('/attendanceList',compact('param'),[$BTfomat,'emps' => $emps,'atts' => $atts,'records' => $records]);
+        return view('/attendanceList',compact('param'),['emps' => $emps,'atn' => $atn,'records' => $records,'years' => $years]);
+    }
+
+    public function delete(Request $request) {
+        //削除処理後、勤怠一覧再読み込み
+        $attendance = new Attendance();
+
+        $attendance->delete($request->input('attendance_id'));
+
+
+        return $this->search($request);
+
     }
 }

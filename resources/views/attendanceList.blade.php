@@ -8,37 +8,28 @@
 @section('content')
 <form action="attendanceList" method="get">
    <select name="emp_name">
-        <option selected></option>
+        @if(empty($param['emp_name']))
+        <option disabled selected>社員を選択</option>
+        @else
+        <option disabled selected>{{ ($param['emp_name']) }}</option>
+        @endif
         @foreach ($emps as $emp)
         <option value="{{ $emp->name }}">{{ $emp->name }}</option>
-        @if($param['emp_name'] == $emp->name )
-        <option value="{{ $emp->name }}" selected>{{ $emp->name }}</option>
-        @endif
         @endforeach
     </select><br>
     <select name="year">
-        @for($y=2015; $y<=date('Y'); $y++)
-        <option value="{{$y}}">{{$y}}</option>
-        @if($param['year'] == $y )
-        <option value="{{$y}}" selected>{{$y}}</option>
-        @endif
-        @endfor
-        @if($param['year'] =="" )
-        <option value="{{date('Y')}}" selected>{{date('Y')}}</option>
-        @endif
+        <option disabled selected>{{ ($param['year']) }}</option>
+        @foreach ($years as $year)
+        <option value="{{ $year->year }}">{{ $year->year }}</option>
+        @endforeach
     </select>年
     <select name="month">
+        <option disabled selected>{{ ($param['month']) }}</option>
         @for($m=1; $m<=12; $m++)
         <option value="{{$m}}">{{$m}}</option>
-        @if($param['month'] == $m )
-        <option value="{{$m}}" selected>{{$m}}</option>
-        @endif
         @endfor
-        @if($param['month'] =="" )
-        <option value="{{date('n')}}" selected>{{date('n')}}</option>
-        @endif
     </select>月
-    <input class="kintai" type="submit" value="勤怠を表示する" >
+    <input class="kintai" type="submit" value="勤怠を表示する">
 </form>
 <hr size="1">
 @if(!empty($param['emp_name']))
@@ -79,20 +70,44 @@
     </tr>
     @foreach ($records as $record)
     <tr class="list">
-        <th>{{ $record->formatted_date }}</th>
-        <th>{{ $record->start_time }}</th>
-        <th>{{ $record->end_time }}</th>
-        <th>{{ ltrim(gmdate("H:i",$record->break_time*60), '0') }}</th>
-        <th>{{ ltrim(gmdate("H:i", strtotime($record->end_time)-strtotime($record->start_time)-($record->break_time)*60), '0') }}</th>
-        <th>{{ $record->detail }}</th>
-        <th>
-            <button value="edit">編集</button>
-            <button value="del">削除</button>
-        </th>
+        <td>{{ $record->formatted_date }}</td>
+        <td>{{ $record->start_time }}</td>
+        <td>{{ $record->end_time }}</td>
+        @if ($record->break_time < 60)
+        <td>{{ substr(gmdate("H:i",$record->break_time*60),1,4) }}</td>
+        @else
+        <td>{{ ltrim(gmdate("H:i",$record->break_time*60), '0') }}</td>
+        @endif
+        <td>{{ ltrim(gmdate("H:i", strtotime($record->end_time)-strtotime($record->start_time)-($record->break_time)*60), '0') }}</td>
+        <td>{{ $record->detail }}</td>
+        <td>
+            <div class="tablebutton" >
+                <form action="attendanceEditor" method="post">
+                {{ csrf_field()}}
+                    <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
+                    <input type="hidden" name="id" value="{{ $record->id }}">
+                    <input type="submit" value="編集" >
+                </form>
+            </div>
+            <div class="tablebutton" >
+                <form action="attendanceList" method="post">
+                {{ csrf_field()}}
+                    <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
+                    <input type="hidden" name="year" value="{{$param['year']}}">
+                    <input type="hidden" name="month" value="{{$param['month']}}">
+                    <input type="hidden" name="attendance_id" value="{{$record->id}}">
+                    <input type="submit" value="削除" onclick="return confirm('勤怠情報を削除してもよろしいですか？')">
+                </form>
+            </div>
+        </td>
     </tr>
     @endforeach
 </table>
-<button class="kintai" href="">勤怠を登録する</button>
+<form action="attendanceEditor" method="post">
+            {{ csrf_field()}}
+    <input type="hidden" name="emp_name" value="{{$param['emp_name']}}">
+    <input class="kintai" type="submit" value="勤怠を登録する" >
+</form>
 @else
 @endif
 @endsection

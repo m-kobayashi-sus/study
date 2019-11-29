@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class Employee extends Model
 {
-    public function addemp($param) {
-        DB::table('employee')
-        ->insertGetId($param);
-        //社員テーブルへデータを登録
+    public function getall() {
+        $employees = DB::table('employee')
+        ->where('delete_flag' , '0')
+        ->get();
+        //有効な社員を全件取得
+        return ($employees);
     }
 }
