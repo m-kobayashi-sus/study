@@ -21,7 +21,8 @@ class Attendance
                 'break_time',
                 'detail',
                 'attendance.delete_flag')
-                ->where('employee.name', '=', $getparam['emp_name'],'AND', 'delete_flag', '=', '0')
+                ->where('employee.name', '=', $getparam['emp_name'])
+                ->where('attendance.delete_flag', '=', '0')
             ->whereYear('date',$getparam['year'])
             ->whereMonth('date', $getparam['month'])
             ->get();
