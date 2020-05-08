@@ -1,0 +1,23 @@
+/*header*/
+
+header {
+	background-color: #0000BB;
+}
+
+header a {
+	color: white;
+}
+header ul {
+	padding: 0;
+	height: 47px;
+	line-height: 47px;
+}
+
+header li {
+	display: inline-block;
+ 	vertical-align: middle;
+}
+
+header li:nth-of-type(3) {
+	float:right;
+}

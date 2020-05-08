@@ -1,0 +1,44 @@
+label {
+ 	display: inline-block;
+ 	width: 150px;
+ 	text-align: left;
+}
+#touroku
+{
+	float:right;
+	display: block;
+	padding: 2px 5px;
+	margin: 10px;
+	width: 100px;
+}
+input {
+	width: 250px;
+	box-sizing: border-box;
+}
+#error_msg {
+	background-color: #FFCCCC;
+	border: solid thin;
+	margin: 10px;
+}
+#conf_msg {
+	background-color: #99FF99;
+	border: solid thin;
+	margin: 10px;
+}
+div ul { font-size: 12px; }
+
+.complete_msg {
+	text-align: center;
+}
+form div {
+	margin: 8px;
+}
+textarea {
+  	resize: none;
+ 	width:300px;
+  	height:100px;
+	vertical-align:top;
+}
+.numarea {
+	 width:50px;
+}
