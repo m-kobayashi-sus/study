@@ -1,0 +1,47 @@
+/*body*/
+select
+{
+	margin: 10px;
+	paddding: auto;
+}
+
+tr.list
+{
+	font-size: 10pt;
+}
+th
+{
+	padding:5px 10px;
+}
+td
+{
+	padding:5px 10px;
+	margin:5px;
+}
+
+.kintai
+{
+	float:right;
+	display: block;
+	padding: 2px 5px;
+	margin: 10px;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+table th {
+	width: auto;
+	height: auto;
+	padding: auto;
+}
+#pager {
+	margin: 0 auto;
+	width: 40%;
+	display: flex;
+	justify-content: space-between;
+}
+#pager a {
+	margin:auto 0;
+}
